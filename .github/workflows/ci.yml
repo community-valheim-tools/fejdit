@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    name: Format, lint and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install toolchain
+        run: |
+          rustup update stable --no-self-update
+          rustup default stable
+          rustup component add clippy rustfmt
+
+      - name: Format
+        run: cargo fmt --all --check
+
+      - name: Clippy
+        run: cargo clippy --all-targets --locked -- -D warnings
+
+      # Every integration test returns early when its sample save is missing and
+      # examples/ is not in the repo, so on a runner this is a compile gate plus
+      # the unit tests, not real coverage of the parsers.
+      - name: Test
+        run: cargo test --locked

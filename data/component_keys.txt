@@ -1,0 +1,251 @@
+# class<TAB>base class<TAB>comma-separated ZDO keys the class reads or writes (generated from game code)
+AccessibilitySettings	MonoBehaviour	CameraShake,ClosedCaptions,DOF,DirectionalSoundIndicators,GuiScale,MotionBlur,ReduceFlashingLights,ShipCameraTilt,ToggleRun
+Achievement	ScriptableObject	
+AllPrivilegesGranted	IPrivilegeProvider	
+AnimSetTrigger	StateMachineBehaviour	
+AnimalAI	BaseAI	
+ArcheryTarget	MonoBehaviour	HitPoint,ammoType,data,dataCount
+ArmorStand	MonoBehaviour	pose
+AudioMan	MonoBehaviour	MasterVolume,SfxVol,SfxVolume
+AudioSettings	MonoBehaviour	ContinousMusic,MasterVolume,MusicVolume,SfxVolume
+BackElement	GroupElement	
+BaseAI	MonoBehaviour	ShownAlertMessage,aggravated,alert,bosscount,haveTarget,huntplayer,lastWorldTime,patrol,patrolPoint,spawnpoint,spawntime
+Bed	MonoBehaviour	owner,ownerName
+Beehive	MonoBehaviour	lastTime,level,product
+BitMaskAttribute	PropertyAttribute	
+ByMaterialPieceList	IPieceList	
+ByUsagePieceList	IPieceList	
+CallbackManager	IDisposable	
+CancelableTaskPopup	LivePopupBase	
+Catapult	MonoBehaviour	Locked,visual
+Character	MonoBehaviour	Attackers,BodyVelocity,Modifiers,RandomSkillFactor,bosscount,cheated,health,level,max_health,noise,overrideHoverName,tamed,tiltrot
+CharacterAnimEvent	MonoBehaviour	LookTarget
+CharacterSaveComparer	IComparer	
+Chat	Terminal	ConsoleBindings,visible
+Cinder	MonoBehaviour	spread
+CinderSpawner	MonoBehaviour	spread
+CinematicsManager	MonoBehaviour	MasterVolume
+CommunityServerList	IServerList	
+ConditionalHideAttribute	PropertyAttribute	
+ConnectToNetworkUI	UIController	
+Console	Terminal	EnableConsole
+Container	MonoBehaviour	InUse,addedDefaultItems,cheated,items
+CookingStation	MonoBehaviour	StartTime,cheated,cheatedQueued,fuel,slot,slotstatus
+Corpse	MonoBehaviour	timeOfDeath
+CreatureSpawner	MonoBehaviour	alive_time
+Destructible	MonoBehaviour	cheated,health
+DisableIfAttribute	PropertyAttribute	
+DisplayNameAttribute	Attribute	
+Door	MonoBehaviour	state
+DropOnDestroyed	MonoBehaviour	cheated
+DummyUser	ILocalUser	
+DungeonGenerator	MonoBehaviour	preSnow,roomData,rooms
+EffectList		ownerZDOId,ownerZDOUserId
+EggGrow	MonoBehaviour	GrowStart
+Emote	Attribute	
+EmoteElement	RadialMenuElement	
+EmoteGroupConfig	ScriptableObject	
+EmoteMappings	ScriptableObject	
+EmptyElement	RadialMenuElement	
+FavoritePieceList	IPieceList	
+Feast	MonoBehaviour	Value
+FejdStartup	MonoBehaviour	ChangeLogHash,EulaAccepted,SameOnlinePlatformOnly,ServerOptionsDisclaimer,accepted_nda,crossplay,profile,world
+Fermenter	MonoBehaviour	Content,StartTime,cheated,cheatedQueued
+FineGrainedRateLimiter	IDisposable	
+Fireplace	MonoBehaviour	fuel,lastTime,state
+Fish	MonoBehaviour	escape,hooked,spawnpoint
+FishingFloat	MonoBehaviour	Bait,CatchID_i,CatchID_u,rodOwner
+FixedPopupBase	PopupBase	
+FloatDeadzone	InputProcessor	
+FloatDynamics	SecondOrderDynamicsBase	
+FloatSpring	BaseSpring	
+FriendsServerList	IServerList	
+Game	MonoBehaviour	CampaignProgress,inBed,mapenabled_,tag
+GameCamera	MonoBehaviour	CameraShake,ShipCameraTilt
+GamepadRumble	MonoBehaviour	GamepadVibrationStrength
+GamepadSettings	MonoBehaviour	AltGlyphs,GamepadAdaptiveTriggers,GamepadSensitivity,GamepadSpeakerVolume,GamepadVibrationStrength,InvertCameraX,InvertCameraY,InvertMouse,MotionSensorXAxisSensitivity,MotionSensorYAxisSensitivity,gamepad_glyphs
+GameplaySettings	MonoBehaviour	AttackTowardsPlayerLookDir,AutoBackups,EnableConsole,KeyHints,ReduceBackgroundUsage,ShowBuildPieceAuthor,ToggleRun,TutorialsEnabled
+Gibber	MonoBehaviour	HitDir,HitPoint
+GlobalGraphicsConfiguration	ScriptableObject	
+GraphicsConfiguration	ScriptableObject	
+GraphicsSettings2	IReadOnlyGraphicsSettings	
+GraphicsSettingsManager	MonoBehaviour	AntiAliasing,Bloom,ChromaticAberration,ClothQuality,ClutterQuality,DOF,DistantShadows,FPSLimit,GraphicsQualityMode,Lights,LodBias,MotionBlur,PointLightShadows,PointLights,RenderScale,SSAO,SSAO_2,ShadowQuality,SimulationDistance,SoftPart,SunShafts,Target3DResolutionVertical,Tesselation,UpscalingAlgorithm,VSync
+GraphicsSettingsPreset	ScriptableObject	
+GraphicsSettingsPresetType	ScriptableObject	
+GrapplingPoint	MonoBehaviour	owner
+GroupElement	RadialMenuElement	
+GuiScaler	MonoBehaviour	GuiScale
+HammerItemElement	GroupElement	
+HotbarGroupConfig	ScriptableObject	
+Hud	MonoBehaviour	QuickPieceSelect,ShowBuildPieceAuthor
+Humanoid	Character	IsBlocking,seed
+IndentAttribute	PropertyAttribute	
+InspectorChangedEventAttribute	PropertyAttribute	
+InventoryGui	MonoBehaviour	cheated,visible
+InviteUsersUI	UIController	
+ItemDrop	MonoBehaviour	itemData,piece,quality,spawntime,variant
+ItemElement	RadialMenuElement	
+ItemGroupConfig	ScriptableObject	
+ItemGroupMappings	ScriptableObject	
+ItemStand	MonoBehaviour	item,quality,type,variant
+KeyHints	MonoBehaviour	KeyHints
+KeySlider	KeyUI	
+KeyToggle	KeyUI	
+KeyboardMouseSettings	MonoBehaviour	InvertMouse,MouseSensitivity,QuickPieceSelect
+LabelAttribute	PropertyAttribute	
+Leviathan	MonoBehaviour	dead
+LiquidVolume	MonoBehaviour	LiquidData
+LivePopupBase	PopupBase	
+LoadSceneAsyncOperation	ILoadSceneAsyncOperation	
+LocalServerList	IServerList	
+Localization		language
+LocalizationSettings	ScriptableObject	
+LocationProxy	MonoBehaviour	location,seed
+LootSpawner	MonoBehaviour	spawntime
+MapTable	MonoBehaviour	data
+MaterialVariation	MonoBehaviour	MatVar
+MineRock5	MonoBehaviour	health
+Minimap	MonoBehaviour	KeyHints
+MonsterAI	BaseAI	DespawnInDay,EventCreature,sleeping
+MusicLocation	MonoBehaviour	played
+MusicMan	MonoBehaviour	MasterVolume,MusicVolume
+MusicVolume	MonoBehaviour	plays
+MuteList	PlayerListManagement	
+NoUI	IUIProvider	
+ObjectSwitcher	MonoBehaviour	switch
+OpenRadialConfig	ScriptableObject	
+Pet	MonoBehaviour	Pet
+Pickable	MonoBehaviour	enabled,picked,picked_time
+PickableItem	MonoBehaviour	itemPrefab,itemStack
+Piece	StaticTarget	cheated,creator,creatorIndex
+Plant	SlowUpdate	plantTime,seed
+PlayFabManager	MonoBehaviour	ShouldTryAutoLogin
+PlayFabMatchmaking	IMatchmakingBackend	
+PlayFabMatchmakingServerData	IEquatable	
+PlayFabZLibWorkQueue	IDisposable	
+Player	Humanoid	$item_flametal,$item_flametalore,AttackTowardsPlayerLookDir,DebugFly,Stealth,WeaponLoaded,_RippleDistance,adrenaline,baseValue,cheated,crowned,dead,dodgeinv,eitr,emote,emoteID,emote_oneshot,inBed,playerID,playerName,pvp,stamina,wakeup
+PlayerController	MonoBehaviour	GamepadSensitivity,InvertCameraX,InvertCameraY,InvertMouse,MotionSensorXAxisSensitivity,MotionSensorYAxisSensitivity,MouseSensitivity,SwitchMouseSensitivity
+Preferences	IPreferencesProvider	
+PrivateArea	MonoBehaviour	creatorName,enabled,permitted,pu_id,pu_name
+PrivilegeManager		SameOnlinePlatformOnly
+Procreation	MonoBehaviour	lovePoints,pregnant
+Projectile	MonoBehaviour	visual
+ProximityState	MonoBehaviour	near
+RadialData		RadialAnimateRadial,RadialDoubleTap,RadialFlick,RadialHoverSpd,RadialPersistentBackBtn,RadialReleaseToUse,RadialSize,RadialSpiral
+RadialDataSO	ScriptableObject	
+RadialMenuElement	MonoBehaviour	_Activated,_Hovering,_Queued,_Selected
+RadialSettings	MonoBehaviour	RadialAnimateRadial,RadialDoubleTap,RadialFlick,RadialHoverSpd,RadialPersistentBackBtn,RadialReleaseToUse,RadialSize,RadialSpiral
+Ragdoll	MonoBehaviour	Hue,InitVel,Saturation,Value,cheated,drop_amount,drop_hash,drops,level
+RandomFlyingBird	MonoBehaviour	landed,spawnpoint
+RandomIdle	StateMachineBehaviour	
+RandomMaterialValues	MonoBehaviour	RandMatSeed
+RecentPieceList	IPieceList	
+Recipe	ScriptableObject	
+ResolvePrivilegeUI	UIController	
+ResourceRoot	MonoBehaviour	lastTime,level
+SEMan		Burning,CampFire,Cold,Encumbered,Freezing,Frost,Lightning,Poison,Rested,Resting,Shelter,Smoked,SoftDeath,Spirit,Tared,Wet,seAttrib
+SE_Burning	StatusEffect	
+SE_Cozy	SE_Stats	
+SE_Crowned	StatusEffect	
+SE_Demister	StatusEffect	
+SE_Finder	StatusEffect	
+SE_Frost	StatusEffect	
+SE_Harpooned	StatusEffect	
+SE_HealthUpgrade	StatusEffect	
+SE_Poison	StatusEffect	
+SE_Puke	SE_Stats	
+SE_React	StatusEffect	
+SE_Rested	SE_Stats	
+SE_Shield	StatusEffect	
+SE_Smoke	StatusEffect	
+SE_Spawn	StatusEffect	
+SE_Stats	StatusEffect	
+SE_Wet	SE_Stats	
+Sadle	MonoBehaviour	stamina,user
+SapCollector	MonoBehaviour	lastTime,level,product
+SaveFileComparer	IComparer	
+SaveWithBackupsComparer	IComparer	
+SeasonalItemGroup	ScriptableObject	
+ServerListGui	MonoBehaviour	serverListTab
+Settings	MonoBehaviour	ClosedCaptions,ContinousMusic,DirectionalSoundIndicators,ReduceBackgroundUsage,ReduceFlashingLights,TutorialsEnabled
+ShieldGenerator	MonoBehaviour	StartTime,fuel
+Ship	MonoBehaviour	forward,rudder
+ShipConstructor	MonoBehaviour	done,spawntime
+ShipControlls	MonoBehaviour	user
+ShowUserProfileUI	UIController	
+Sign	MonoBehaviour	author,authorPlatformDisplayName,text
+SignInLocalUserUI	UIController	
+SingleEnumAttribute	PropertyAttribute	
+Smelter	MonoBehaviour	SpawnAmount,SpawnOre,StartTime,accTime,bakeTimer,cheated,cheatedQueued,fuel,item,item0,queued
+SpawnAbility	MonoBehaviour	MaxInstances,RandomSkillFactor
+SpawnSystem	MonoBehaviour	EventCreature
+SpringVector2	BaseSpring	
+SpringVector3	BaseSpring	
+StateController	StateMachineBehaviour	
+StaticPhysics	SlowUpdate	
+StaticRotation	MonoBehaviour	tiltrot
+StatusEffect	ScriptableObject	
+SteamAchievements	IAchievementManager	
+SteamworksMatchmaking	IMatchmakingBackend	
+Switch2InvertY	InputProcessor	
+Switch2ScrollModifier	InputProcessor	
+Tameable	MonoBehaviour	HaveSaddle,MaxInstances,TameLastFeeding,TameTimeLeft,TamedName,TamedNameAuthor,follow
+TaskPopup	FixedPopupBase	
+TeleportWorld	MonoBehaviour	tag,tagauthor
+Terminal	MonoBehaviour	HasFields,cheated,quick_save_down,quick_save_left,quick_save_right,quick_save_up,sortcraft,tag
+TerrainComp	MonoBehaviour	TCData
+TerrainModifier	MonoBehaviour	terrainModifierTimeCreated
+TextEntryPopup	FixedPopupBase	
+ThrowElement	RadialMenuElement	
+ThrowElementInfo	ElementInfo	
+ThrowGroupConfig	ScriptableObject	
+TombStone	MonoBehaviour	inWater,owner,ownerName,spawnpoint,timeOfDeath
+Trader	MonoBehaviour	Stand
+Trap	MonoBehaviour	state,triggered
+TreeBase	MonoBehaviour	health
+TreeLog	MonoBehaviour	health
+TriggerSpawner	MonoBehaviour	spawntime
+Turret	MonoBehaviour	ammo,ammoType,lastAttack,target,targets
+UISelectableGroup	Selectable	
+UnderlinedHeaderAttribute	PropertyAttribute	
+UserInfo	ISerializableParameter	
+Vagon	MonoBehaviour	attachJoint
+ValheimRadialConfig	ScriptableObject	
+Vector2Deadzone	InputProcessor	
+Vector2Dynamics	SecondOrderDynamicsBase	
+Vector2MultiTap	IInputInteraction	
+Vector2Tap	IInputInteraction	
+Vector3Dynamics	SecondOrderDynamicsBase	
+Vine	MonoBehaviour	GrowStart,offset,plantTime,type
+VirtualKeyboardUI	UIController	
+VisEquipment	MonoBehaviour	BeardItem,ChestItem,HairColor,HairItem,HelmetItem,LeftBackItem,LeftBackItemQuality,LeftBackItemVariant,LeftItem,LeftItemQuality,LeftItemVariant,LegItem,ModelIndex,RightBackItem,RightBackItemQuality,RightItem,RightItemQuality,ShoulderItem,ShoulderItemQuality,ShoulderItemVariant,SkinColor,TrinketItem,UtilityItem,noBeard,noHair
+WarningPopup	FixedPopupBase	
+WarriorNames	MonoBehaviour	ModelIndex,overrideHoverName
+WearNTear	MonoBehaviour	health,preSnow,snow,support
+WebBrowserUI	UIController	
+WispSpawner	MonoBehaviour	LastSpawn
+WorldSaveComparer	IComparer	
+YesNoPopup	FixedPopupBase	
+ZBroastcast	IDisposable	
+ZConnector	IDisposable	
+ZConnector2	IDisposable	
+ZDO	IEquatable	SpawnPoint,SpawnTime,prefab,spawn_time,spawnpoint,spawntime
+ZDOHelper		0_crafterName,1_crafterName,2_crafterName,3_crafterName,4_crafterName,5_crafterName,BodyVelocity,CatchID_i,CatchID_u,LookDir,LookTarget,RideSpeed,autoDespawn,body_avel,body_vel,burnt0,burnt1,burnt10,burnt2,burnt3,burnt4,burnt5,burnt6,burnt7,burnt8,burnt9,catchID,cut_time,generated,health,inBase,noise,patrolSpawnPoint,support,targetHear,targetSee,tiltrot,vel
+ZDOMan		0_item,1_item,2_item,3_item,4_item,5_item,Content,HeathRockPillar,HeathRockPillar_frac,LeftItem,LevelTerrain,RodOwner_i,RodOwner_u,cheated,crafterID,crafterName,cultivate,dataCount,digg,digg_v2,durability,item,items,mud_road,parentID_u,parent_id_i,parent_id_u,path,paved_road,pickedUp,quality,raise,replant,rodOwner,roomData,rooms,seed,ship_construction,spawn_id_i,spawn_id_u,stack,tag,target_i,target_u,terrainModifierTimeCreated,user,user_i,user_u,variant,worldLevel
+ZDOVars		0_item,Attackers,Bait,BeardItem,BodyVelocity,CatchID_i,CatchID_u,ChestItem,Content,DebugFly,DespawnInDay,EventCreature,GrowStart,HairColor,HairItem,HaveSaddle,HelmetItem,HitDir,HitPoint,Hue,InUse,InitVel,IsBlocking,LastSpawn,LeftBackItem,LeftBackItemQuality,LeftBackItemVariant,LeftItem,LeftItemQuality,LeftItemVariant,LegItem,LiquidData,Locked,LookDir,LookTarget,MaxInstances,ModelIndex,Modifiers,RandomSkillFactor,RideSpeed,RightBackItem,RightBackItemQuality,RightItem,RightItemQuality,RodOwner_i,RodOwner_u,Saturation,ShoulderItem,ShoulderItemQuality,ShoulderItemVariant,ShownAlertMessage,SkinColor,SpawnAmount,SpawnOre,SpawnPoint,SpawnTime,StartTime,Stealth,TCData,TameLastFeeding,TameTimeLeft,TamedName,TamedNameAuthor,TrinketItem,UtilityItem,Value,WeaponLoaded,accTime,addedDefaultItems,adrenaline,aggravated,alert,alive_time,ammo,ammoType,animation_speed,attachJoint,author,authorPlatformDisplayName,autoDespawn,bakeTimer,baseValue,body_avel,body_vel,bosscount,catchID,cheated,cheatedQueued,count,crafterID,crafterName,creator,creatorIndex,creatorName,crowned,cut_time,data,dataCount,dead,dodgeinv,done,drops,durability,eitr,emote,emoteID,emote_oneshot,enabled,escape,follow,forward,fuel,generated,haveTarget,health,hooked,huntplayer,inBase,inBed,inWater,item,item0,itemData,itemPrefab,itemStack,items,junkData,landed,lastAttack,lastTime,lastWorldTime,level,location,lovePoints,max_health,noBeard,noHair,noise,offset,overrideHoverName,owner,ownerName,ownerZDOId,ownerZDOUserId,parent_id_i,parent_id_u,patrol,patrolPoint,patrolSpawnPoint,permitted,pickable,picked,pickedUp,picked_time,piece,plantTime,played,playerID,playerName,plays,pose,preSnow,pregnant,product,pvp,quality,queued,relPos,relRot,rodOwner,roomData,rooms,rudder,scale,scaleScalar,seAttrib,seed,sleeping,snow,spawn_id_i,spawn_id_u,spawn_time,spawnpoint,spawntime,spread,stack,stamina,state,support,switch,tag,tagauthor,tamed,targetHear,targetSee,target_i,target_u,targets,terrainModifierTimeCreated,text,tiltrot,timeOfDeath,triggered,type,user,user_i,user_u,variant,vel,velRel,visual,wakeup,worldLevel
+ZInput		ControllerLayout,LegacyNuked,MouseLayout,SwapTriggers,ToggleRun,gamepad_enabled,input_switching_mode,kbmBinding_
+ZNat	IDisposable	
+ZNet	MonoBehaviour	AutoBackups,AutoBackups_long,AutoBackups_short
+ZNetPeer	IDisposable	
+ZNetView	MonoBehaviour	HasFields,scale,scaleScalar
+ZNtp	IDisposable	
+ZPlayFabSocket	ZNetStats	
+ZRpc	IDisposable	
+ZSFX	MonoBehaviour	ownerZDOId,ownerZDOUserId
+ZSocket	IDisposable	
+ZSocket2	ZNetStats	
+ZSteamSocket	IDisposable	
+ZSteamSocketOLD	IDisposable	
+ZSyncAnimation	MonoBehaviour	animation_speed
+ZSyncTransform	MonoBehaviour	attachJoint,body_avel,body_vel,relPos,relRot,scale,scaleScalar,vel,velRel
+ZoneSystem	MonoBehaviour	cheated,preSnow

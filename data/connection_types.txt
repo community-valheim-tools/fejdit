@@ -1,0 +1,20 @@
+# ZDO connection types (`ZDOExtraData.ConnectionType`) and the component
+# classes that may legitimately carry each side of one, hand-curated from the
+# game code. Columns: type name<TAB>source classes<TAB>target classes.
+#
+# The source side is the object that established the connection; the target
+# side is the object it points at, saved with the `Target` bit (0x10) set.
+# An empty class list means any prefab may carry that side, so it is never
+# removed -- used where the game does not constrain the far end.
+#
+# Portal:        Game.ConnectPortals pairs two ZDOs from ZDOMan.GetPortals(),
+#                which only admits prefabs in Game.PortalPrefabHash, so both
+#                ends are always portals.
+# SyncTransform: ZSyncTransform.Update sets it on the child; the parent it
+#                attaches to can be any networked object.
+# Spawned:       CreatureSpawner.Spawn sets it on the spawner; the target is
+#                whatever m_creaturePrefab instantiates, matched only on
+#                ZNetView, so it is not constrained to creatures.
+Portal	TeleportWorld	TeleportWorld
+SyncTransform	ZSyncTransform	
+Spawned	CreatureSpawner	

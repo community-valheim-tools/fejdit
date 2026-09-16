@@ -1,0 +1,7 @@
+/target
+/examples
+.DS_Store
+*.fejdit-tmp
+*.fejdit-bak
+.idea/
+__pycache__/

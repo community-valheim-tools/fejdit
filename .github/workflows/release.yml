@@ -1,0 +1,175 @@
+name: Build and release
+
+# A semver v-tag (v0.1.0, v1.0.0-rc.1) builds and publishes. Anything else
+# builds the same five targets and publishes nothing, so the cross-compiles are
+# exercised before a tag depends on them.
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'
+  pull_request:
+    paths:
+      - '.github/workflows/release.yml'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -C strip=symbols
+
+jobs:
+  # Fail in ~20s rather than after five builds if the tag and the crate disagree.
+  verify:
+    name: Verify tag
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.check.outputs.version }}
+      prerelease: ${{ steps.check.outputs.prerelease }}
+      publish: ${{ steps.check.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: check
+        run: |
+          crate="$(cargo metadata --format-version 1 --no-deps | jq -r '.packages[0].version')"
+          if [ "$GITHUB_EVENT_NAME" = "push" ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            version="${GITHUB_REF_NAME#v}"
+            if [ "$version" != "$crate" ]; then
+              echo "::error::tag $GITHUB_REF_NAME does not match Cargo.toml version $crate"
+              exit 1
+            fi
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          else
+            version="$crate"
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::not a tag, building $crate without publishing"
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [ "$version" != "${version%%-*}" ]; then
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    name: ${{ matrix.target }}
+    needs: verify
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-latest
+            apt: musl-tools
+          # No aarch64 musl linker in apt, and the dep tree is pure Rust, so
+          # cross's container image is the cheapest way to get a static build.
+          - target: aarch64-unknown-linux-musl
+            os: ubuntu-latest
+            cross: true
+          - target: aarch64-apple-darwin
+            os: macos-latest
+          - target: x86_64-apple-darwin
+            os: macos-latest
+    env:
+      TARGET: ${{ matrix.target }}
+      VERSION: ${{ needs.verify.outputs.version }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install toolchain
+        run: |
+          rustup update stable --no-self-update
+          rustup default stable
+          rustup target add "$TARGET"
+        shell: bash
+
+      - name: Install musl linker
+        if: matrix.apt
+        run: sudo apt-get update && sudo apt-get install -y ${{ matrix.apt }}
+
+      - name: Install cross
+        if: matrix.cross
+        run: |
+          curl -fsSL https://github.com/cross-rs/cross/releases/download/v0.2.5/cross-x86_64-unknown-linux-musl.tar.gz \
+            | sudo tar xz -C /usr/local/bin cross
+
+      - name: Build
+        run: ${{ matrix.cross && 'cross' || 'cargo' }} build --release --locked --target "$TARGET"
+        shell: bash
+
+      # Release assets are stored indefinitely and built once, so compress at
+      # the maximum: -9e, and -T1 because threaded xz splits the input into
+      # independent blocks and gives up ratio for a wall-clock saving that is
+      # meaningless on a binary this size. macOS has liblzma but no xz(1).
+      - name: Package (tar.xz)
+        if: runner.os != 'Windows'
+        run: |
+          if [ "$RUNNER_OS" = "macOS" ] && ! command -v xz >/dev/null; then
+            brew install xz
+          fi
+          staging="fejdit-$VERSION-$TARGET"
+          mkdir "$staging"
+          cp "target/$TARGET/release/fejdit" README.md LICENSE "$staging/"
+          tar -cf - "$staging" | xz -9 -e -T1 > "$staging.tar.xz"
+
+      # Windows keeps a zip so Explorer can open it unaided; 7-Zip is on the
+      # runner and squeezes deflate harder than Compress-Archive will.
+      - name: Package (zip)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $staging = "fejdit-$env:VERSION-$env:TARGET"
+          New-Item -ItemType Directory -Path $staging | Out-Null
+          Copy-Item "target/$env:TARGET/release/fejdit.exe", "README.md", "LICENSE" -Destination $staging
+          7z a -tzip -mx=9 -mfb=258 -mpass=15 "$staging.zip" $staging
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dist-${{ matrix.target }}
+          path: |
+            fejdit-*.tar.xz
+            fejdit-*.zip
+          if-no-files-found: error
+          retention-days: 7
+
+  release:
+    name: Publish release
+    needs: [verify, build]
+    if: needs.verify.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: dist-*
+          merge-multiple: true
+          path: dist
+
+      # fejdit rewrites save files in place, so a truncated download is
+      # destructive rather than merely annoying. Ship checksums.
+      - name: Checksums
+        run: cd dist && sha256sum fejdit-* > SHA256SUMS && cat SHA256SUMS
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.verify.outputs.version }}
+        run: |
+          flags=()
+          if [ "${{ needs.verify.outputs.prerelease }}" = "true" ]; then
+            flags+=(--prerelease)
+          fi
+          gh release create "$GITHUB_REF_NAME" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "fejdit $VERSION" \
+            --generate-notes \
+            "${flags[@]}" \
+            dist/*

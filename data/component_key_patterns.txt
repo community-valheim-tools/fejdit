@@ -1,0 +1,83 @@
+# Dynamically built ZDO keys that the generated component_keys.txt cannot
+# capture, one per line: class<TAB>pattern. In a pattern, `#` matches one or
+# more digits and `*` matches anything. Hand-curated from the game code.
+ItemDrop	data_#
+ItemDrop	data__#
+ItemDrop	#_data_#
+ItemDrop	#_data__#
+ItemDrop	#_crafterID
+ItemDrop	#_crafterName
+ItemDrop	#_dataCount
+ItemDrop	#_durability
+ItemDrop	#_pickedUp
+ItemDrop	#_quality
+ItemDrop	#_stack
+ItemDrop	#_variant
+ItemDrop	#_worldLevel
+ArmorStand	#_item
+ArmorStand	#_data_#
+ArmorStand	#_data__#
+ArmorStand	#_crafterID
+ArmorStand	#_crafterName
+ArmorStand	#_dataCount
+ArmorStand	#_durability
+ArmorStand	#_pickedUp
+ArmorStand	#_quality
+ArmorStand	#_stack
+ArmorStand	#_variant
+ArmorStand	#_worldLevel
+CookingStation	slot#
+CookingStation	slotstatus#
+DungeonGenerator	room#_pos
+DungeonGenerator	room#_rot
+DungeonGenerator	room#_seed
+PrivateArea	pu_id#
+PrivateArea	pu_name#
+Ragdoll	drop_amount#
+Ragdoll	drop_hash#
+Smelter	item#
+Turret	target#
+MaterialVariation	MatVar#
+SpawnSystem	b_*
+SpawnSystem	e_*
+# ZNetView custom field overrides (used by mods): allowed everywhere.
+ZNetView	HasFields*
+ZNetView	*.m_*
+# Up to game 0.221 an item lying in the world stored its ItemData as separate
+# keys (ItemDrop.SaveToZDO). Game 1.0 packs them into one `itemData` byte
+# array and only reads the old keys in ZDOMan.ConvertInventories, which is
+# not a component, so the generated table no longer attributes them to
+# ItemDrop. Every save from before 1.0 still carries them on every loose
+# item; they stay ItemDrop's here.
+ItemDrop	durability
+ItemDrop	stack
+ItemDrop	crafterID
+ItemDrop	crafterName
+ItemDrop	dataCount
+ItemDrop	worldLevel
+ItemDrop	pickedUp
+# The two 1.0 public-test builds (world versions 38 and 39) stored this as a
+# key of its own before it moved into `itemData`.
+ItemDrop	cheated
+# Item stands store the displayed item through ItemDrop's static SaveToZDO:
+# the separate keys before 1.0, one `itemData` blob from 1.0 (and armor
+# stands one `<n>_itemData` per slot).
+ItemStand	itemData
+ArmorStand	#_itemData
+ItemStand	durability
+ItemStand	stack
+ItemStand	quality
+ItemStand	variant
+ItemStand	crafterID
+ItemStand	crafterName
+ItemStand	dataCount
+ItemStand	worldLevel
+ItemStand	pickedUp
+ItemStand	data_#
+ItemStand	data__#
+# Legacy name for the same idea: the grausten pieces still carry MatVar0 from
+# an older build, but now have RandomMaterialValues (which keys off
+# RandMatSeed) rather than MaterialVariation. The game ignores the old key.
+# Attributing it here keeps clean-netobj-corruption from deleting a
+# version leftover, which is not the corruption it was asked to remove.
+RandomMaterialValues	MatVar#
